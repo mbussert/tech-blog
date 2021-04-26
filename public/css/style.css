@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.navheight {
+  min-height: 8vh;
+}
+
+.logo {
+  height: 6vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.body-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.bodycontent {
+  /* background-image: url("../imgs/bgimage.jpg"); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../imgs/bgimage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.bodycontent:after {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.blog-entry {
+  min-width: 28rem;
+  max-width: 45vw;
+}
+
+.post-info {
+  padding-right: 2rem;
+  margin: 0;
+}
