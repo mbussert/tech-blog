@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tech Blog</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,7 +20,9 @@
 
   <body>
     <section>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navheight">
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light navheight nav-text"
+      >
         <div class="container-fluid">
           <a class="navbar-brand" href="#"
             ><img
@@ -40,16 +47,40 @@
           >
             <ul class="navbar-nav mb-2 mb-lg-0 px-5">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a
+                  class="nav-link"
+                  href="/login"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdropLogin"
+                  >Login</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/register"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdropRegister"
+                  >Register</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/newpost"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdropNewPost"
+                  >Add New Post</a
+                >
               </li>
             </ul>
           </div>
@@ -61,14 +92,16 @@
       <main class="bodycontent container-fluid">
         <!-- Render the contents of the sub layout here -->
         {{{ body }}}
+
+        <!-- Blog Post Template -->
         <div class="container blog-entry pt-3">
           <div class="card">
             <div class="card-header">
-              <h5>Blog Entry Title Here</h5>
+              <h5 class="post-info py-1">Blog Entry Title Here</h5>
             </div>
 
             <div class="card-body">
-              <p class="card-text">
+              <p class="card-text post-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Excepturi eum, ex dolores accusantium nostrum asperiores nemo
                 eaque dignissimos perspiciatis libero magnam optio! Velit quos,
@@ -83,12 +116,339 @@
             <div
               class="card-footer d-flex align-items-center justify-content-end"
             >
-              <p class="post-info">Posted by Michael Bussert on 4/25/21</p>
-              <a href="#" class="btn btn-primary btn-sm">Add Comment</a>
+              <p class="post-info post-text">
+                Posted by Michael Bussert on 4/25/21
+              </p>
+              <a
+                href="#"
+                class="btn btn-primary btn-sm post-text"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdropNewComment"
+                >Add Comment</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Template -->
+        <div class="container blog-entry pt-3">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <h5 class="post-info py-1">Welcome, Username!</h5>
+              <p class="p-0 m-0 text-black-50">Dashboard</p>
+            </div>
+
+            <div class="card-body pt-5 pb-5">
+              <h5 class="card-text display-6 post-text pb-2">Your Posts:</h5>
+              <hr class="py-1 bg-secondary rounded-pill" />
+              <div class="row pt-3">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Post 1 Title</h5>
+                      <p class="card-text">
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                      <a href="#" class="btn btn-primary">Edit</a>
+                      <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Post 2 Title</h5>
+                      <p class="card-text">
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                      <a href="#" class="btn btn-primary">Edit</a>
+                      <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </main>
+    </section>
+
+    <!-- Modal Section -->
+    <section>
+      <!-- Login Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdropLogin"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Login to The Tech Blog
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label"
+                  >Password</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="inputPassword"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary post-text"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary post-text">
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdropRegister"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Register a New Account
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="E.g. TechGuyMike"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput2"
+                  placeholder="name@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label"
+                  >Password</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="inputPassword"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary post-text"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary post-text">
+                Register
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Post Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdropNewPost"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Add New Post</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3 row">
+                <label for="staticUsername" class="col-sm-2 col-form-label"
+                  >Username:
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext px-2"
+                    id="staticUsername"
+                    value="MikeTechGuy"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="newPostTitle" class="form-label">Post Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="newPostTitle"
+                  placeholder=""
+                />
+              </div>
+              <div class="mb-3">
+                <label for="newPostBody" class="form-label">Post Text</label>
+                <textarea
+                  class="form-control"
+                  id="newPostBody"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary post-text"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary post-text">
+                Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Comment Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdropNewComment"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Add Comment</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3 row">
+                <label for="staticPostTitle" class="col-sm-2 col-form-label"
+                  >Post:
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="staticPostTitle"
+                    value="Post Title Here"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="newCommentBody" class="form-label">Comment</label>
+                <textarea
+                  class="form-control"
+                  id="newCommentBody"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary post-text"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary post-text">
+                Add Comment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer></footer>

@@ -2,30 +2,34 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 .navheight {
-  min-height: 8vh;
+  min-height: 6vh;
+}
+
+.nav-text {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .logo {
-  height: 6vw;
+  height: 5vw;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
 .body-container {
   width: 100%;
-  height: 100vh;
+}
+
+.post-text {
+  font-family: "Roboto", sans-serif;
 }
 
 .bodycontent {
-  /* background-image: url("../imgs/bgimage.jpg"); */
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../imgs/bgimage.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .bodycontent:after {
