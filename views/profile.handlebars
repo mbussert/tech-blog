@@ -1,0 +1,50 @@
+<div class="container blog-entry pt-3">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <h5 class="post-info py-1">Welcome, {{name}}!</h5>
+              <p class="p-0 m-0 text-black-50">Dashboard</p>
+            </div>
+
+            <div class="card-body pt-5">
+              <p class="lead">Username: {{user.name}}</p>
+              <p class="lead">Email: {{user.email}}</p>
+            </div>
+
+            <div class="card-body pt-1 pb-5">
+              <h5 class="card-text display-6 post-text pb-2">Your Posts:</h5>
+              <hr class="py-1 bg-secondary rounded-pill" />
+              <div class="row pt-3">
+
+                {{#if blogposts.length}}  
+                {{#each blogposts as |post|}}
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{post.title}}</h5>
+                      <p class="text-muted p-0">Posted {{format_date post.date_created}}</p>
+                      <p class="card-text">
+                        {{post.text}}
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdropUpdatePost"
+                        >Edit</a
+                      >
+                      <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                  </div>
+                </div>
+
+                {{/each}}
+                {{else}}
+                <p class="lead">No posts to display.</p>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+<script src="./js/profile.js"></script>
