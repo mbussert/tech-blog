@@ -17,11 +17,14 @@ router.get("/", async (req, res) => {
     // Serialize data so the template can read it
     const blogposts = postData.map((post) => post.get({ plain: true }));
 
+    const userName = req.session.username;
+
     // console.log("Blogposts Variable:", blogposts);
 
     // Pass serialized data and session flag into template
     res.render("homepage", {
       blogposts,
+      userName,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -60,16 +63,14 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [{ model: Post }],
     });
 
-    console.log("userData on profile:", userData);
-
     const user = userData.get({ plain: true });
     const userPosts = userData.posts.map((post) => post.get({ plain: true }));
-
-    console.log("userData on profile:", userPosts);
+    const userName = req.session.username;
 
     res.render("profile", {
       ...user,
       userPosts,
+      userName,
       logged_in: true,
     });
   } catch (err) {
