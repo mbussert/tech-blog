@@ -8,8 +8,8 @@
             </div>
 
             <div class="card-body pt-5">
-              <p class="lead">Username: {{username}}</p>
-              <p class="lead">Email: {{email}}</p>
+              <p class="lead"><span class="h4">Username:</span> {{username}}</p>
+              <p class="lead"><span class="h4">Email:</span> {{email}}</p>
             </div>
 
             <div class="card-body pt-1 pb-5">
@@ -17,8 +17,8 @@
               <hr class="py-1 bg-secondary rounded-pill" />
               <div class="row pt-3">
 
-                {{#if blogposts.length}}  
-                {{#each blogposts as |post|}}
+                {{#if userPosts.length}}  
+                {{#each userPosts as |post|}}
                 <div class="col-sm-6">
                   <div class="card">
                     <div class="card-body">
@@ -34,7 +34,7 @@
                         data-bs-target="#staticBackdropUpdatePost"
                         >Edit</a
                       >
-                      <a href="#" class="btn btn-primary" data-id="{{post.id}}">Delete</a>
+                      <a href="#" class="btn btn-primary" id="delete-btn" data-id="{{post.id}}">Delete</a>
                     </div>
                   </div>
                 </div>
