@@ -23,6 +23,9 @@ const newPostFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+  event.preventDefault();
+  console.log("Delete button clicked");
+
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
@@ -38,6 +41,39 @@ const delButtonHandler = async (event) => {
   }
 };
 
+// const editButtonHandler = async (event) => {
+//   event.preventDefault();
+
+//   if (event.target.hasAttribute("data-id")) {
+//     const id = event.target.getAttribute("data-id");
+
+//     const response = await fetch(`/api/posts/${id}`, {
+//       method: "PUT",
+//     });
+
+//     if (response.ok) {
+//       document.location.replace("/profile");
+//     } else {
+//       alert("Failed to edit post.");
+//     }
+//   }
+// };
+
+function autoFill(event) {
+  event.preventDefault();
+
+  let postTitle = $("#post-title").text().trim();
+  let postBody = $("#post-body").text().trim();
+  let x = event.target;
+
+  console.log(x);
+  console.log(postTitle);
+  console.log(postBody);
+
+  $("#newPostTitle").val(postTitle);
+  $("#newPostBody").val(postBody);
+}
+
 document
   .querySelector("#newPost-btn")
   .addEventListener("click", newPostFormHandler);
@@ -45,3 +81,7 @@ document
 document
   .querySelector("#delete-btn")
   .addEventListener("click", delButtonHandler);
+
+document
+  .querySelector("#edit-btn")
+  .addEventListener("click", editButtonHandler);

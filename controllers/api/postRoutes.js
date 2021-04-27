@@ -29,6 +29,8 @@ router.delete("/:id", withAuth, async (req, res) => {
       return;
     }
 
+    console.log("Delete ran on:", postData);
+
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
