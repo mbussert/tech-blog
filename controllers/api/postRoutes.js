@@ -15,6 +15,51 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+// router.get("/post/:id", async (req, res) => {
+//   try {
+//     const postData = await Post.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username"],
+//         },
+//       ],
+//     });
+
+//     const post = postData.get({ plain: true });
+
+//     res.json(post);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+//   try {
+//     // Get all posts and JOIN with user data
+//     const postData = await Post.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username", "email"],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const blogposts = postData.map((post) => post.get({ plain: true }));
+
+//     // console.log("Blogposts Variable:", blogposts);
+
+//     // Pass serialized data and session flag into template
+//     res.send({
+//       blogposts,
+//     });
+//     console.log("new one", blogposts);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({

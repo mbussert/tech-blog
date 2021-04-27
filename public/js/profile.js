@@ -59,20 +59,28 @@ const delButtonHandler = async (event) => {
 //   }
 // };
 
-function autoFill(event) {
+const autoFill = async (event) => {
   event.preventDefault();
 
-  let postTitle = $("#post-title").text().trim();
-  let postBody = $("#post-body").text().trim();
-  let x = event.target;
+  const id = event.target.getAttribute("data-id");
 
-  console.log(x);
-  console.log(postTitle);
-  console.log(postBody);
+  const response = await fetch(`/api/post/${id}`, {
+    method: "GET",
+  });
 
-  $("#newPostTitle").val(postTitle);
-  $("#newPostBody").val(postBody);
-}
+  console.log(response);
+
+  // let postTitle = $("#post-title").text().trim();
+  // let postBody = $("#post-body").text().trim();
+  // let x = event.target;
+
+  // console.log(x);
+  // console.log(postTitle);
+  // console.log(postBody);
+
+  // $("#newPostTitle").val(postTitle);
+  // $("#newPostBody").val(postBody);
+};
 
 document
   .querySelector("#newPost-btn")
