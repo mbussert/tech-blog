@@ -13,7 +13,7 @@
 
     <div class="card-footer d-flex align-items-center justify-content-end">
       <p class="post-info post-text">
-                Posted by {{post.user.name}} on {{format_date post.date_created}}
+                Posted by {{post.user.username}} on {{format_date post.date_created}}
       </p>
       {{#unless logged_in}}
       <a

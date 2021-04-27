@@ -1,0 +1,12 @@
+[
+  {
+    "title": "First Test",
+    "text": "This is a test post. Let's see how it renders.",
+    "user_id": "1"
+  },
+  {
+    "title": "Second Test",
+    "text": "This is a test post. Let's see how it renders.",
+    "user_id": "3"
+  }
+]
