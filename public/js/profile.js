@@ -83,10 +83,23 @@ $(document).ready(function () {
   });
 });
 
+// Function to delete a post via dashboard
+$(document).ready(function () {
+  $(".delete-btn").click(function () {
+    const id = $(this).data("id");
+
+    console.log("clicked");
+
+    $.ajax({
+      url: `/api/posts/${id}`,
+      type: "delete",
+      success: function () {
+        document.location.replace("/profile");
+      },
+    });
+  });
+});
+
 document
   .querySelector("#newPost-btn")
   .addEventListener("click", newPostFormHandler);
-
-document
-  .querySelector("#delete-btn")
-  .addEventListener("click", delButtonHandler);
