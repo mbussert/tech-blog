@@ -15,24 +15,25 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/post/:id", async (req, res) => {
-//   try {
-//     const postData = await Post.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//       ],
-//     });
+router.get("/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
 
-//     const post = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
-//     res.json(post);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    console.log(post);
+    res.json(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //   try {
 //     // Get all posts and JOIN with user data

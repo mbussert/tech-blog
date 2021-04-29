@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 const newPostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -44,11 +46,13 @@ const delButtonHandler = async (event) => {
 // const editButtonHandler = async (event) => {
 //   event.preventDefault();
 
+//   console.log("edit clicked");
+
 //   if (event.target.hasAttribute("data-id")) {
 //     const id = event.target.getAttribute("data-id");
 
-//     const response = await fetch(`/api/posts/${id}`, {
-//       method: "PUT",
+//     const response = await fetch(`api/posts/${id}`, {
+//       method: "GET",
 //     });
 
 //     if (response.ok) {
@@ -59,28 +63,25 @@ const delButtonHandler = async (event) => {
 //   }
 // };
 
-const autoFill = async (event) => {
-  event.preventDefault();
+// Function to auto fill contents of Edit modal
+$(document).ready(function () {
+  $(".edit-modal").click(function () {
+    const id = $(this).data("id");
 
-  const id = event.target.getAttribute("data-id");
+    $.ajax({
+      url: `/post/${id}`,
+      type: "get",
+      success: function (response) {
+        // Replace title and text body in modal
+        $("#newPostTitle").val(response.title);
+        $("#newPostBody").val(response.text);
 
-  const response = await fetch(`/api/post/${id}`, {
-    method: "GET",
+        // Open modal
+        $("#staticBackdropUpdatePost").modal("show");
+      },
+    });
   });
-
-  console.log(response);
-
-  // let postTitle = $("#post-title").text().trim();
-  // let postBody = $("#post-body").text().trim();
-  // let x = event.target;
-
-  // console.log(x);
-  // console.log(postTitle);
-  // console.log(postBody);
-
-  // $("#newPostTitle").val(postTitle);
-  // $("#newPostBody").val(postBody);
-};
+});
 
 document
   .querySelector("#newPost-btn")
@@ -89,7 +90,3 @@ document
 document
   .querySelector("#delete-btn")
   .addEventListener("click", delButtonHandler);
-
-document
-  .querySelector("#edit-btn")
-  .addEventListener("click", editButtonHandler);
