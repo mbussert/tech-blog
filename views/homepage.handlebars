@@ -1,39 +1,40 @@
 {{#each blogposts as |post| }}
-<div class="container blog-entry pt-3">
+<div class="container blog-entry pt-3 mb-5">
   <div class="card">
-    <div class="card-header">
-      <h5 class="post-info py-1">{{post.title}}</h5>
-    </div>
-
-    <div class="card-body">
-      <p class="card-text post-text">
-        {{post.text}}
-      </p>
-    </div>
-
-    <div class="card-footer d-flex align-items-center justify-content-end">
-      <p class="post-info post-text">
-                Posted by {{post.user.username}} on {{format_date post.date_created}}
-      </p>
-      {{#unless logged_in}}
+    <div class="card-header bg-secondary text-light">
+      <div class="d-flex">
+      <h5 class="post-info py-1 me-auto">{{post.title}}</h5>
+      
+      
       <a
                 href="#"
                 id="comment-modal"
-                class="comment-modal btn btn-primary btn-sm post-text"
+                class="comment-modal btn btn-light btn-sm post-text align-self-center align-middle mt-2"
                 data-post-id="{{post.id}}"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdropNewComment"
                 >Add Comment</a
       >
-      {{/unless}}
+      </div>
+      <p class="post-info post-text"><em>
+                Posted by {{post.user.username}} on {{format_date post.date_created}}
+      </p></em>
+      
+    </div>
+
+    <div class="card-body ">
+      <p class="card-text post-text ">
+        {{post.text}}
+      </p>
     </div>
   </div>
-  {{#if postComments.length}}
+  {{#if post.comments.length}}
   {{#each comments as |comment|}}
-  <div class="card">
-    <div class="card-body">
-      <div class="card-text post-text">
-        <p>Comment Here</p>
+  <div class="card p0 m0 bg-light">
+    <div class="card-body p0 m0 ">
+      <div class="card-text p0 m0">
+        <p>{{comment_text}}</p>
+        <p class="text-right"><em>-- {{user.username}} on {{format_date created_at}}</em></p>
       </div>
     </div>
   </div>
