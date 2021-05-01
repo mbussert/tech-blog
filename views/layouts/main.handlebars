@@ -84,8 +84,9 @@
               {{#if logged_in}}
               <li class="nav-item">
                 <a
-                  class="nav-link"
-                  href="/newpost"
+                  id="newpost-btn-id"
+                  class="newpost-btn nav-link"
+                  href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdropNewPost"
                   >Add New Post</a
@@ -310,7 +311,7 @@
               >
                 Close
               </button>
-              <button type="button" id="newPost-btn" class="btn btn-primary post-text">
+              <button type="button" id="newpost-submit" class="submit-post-btn btn btn-primary post-text">
                 Post
               </button>
             </div>
@@ -445,10 +446,9 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/login.js"></script>
-    
     <script src="/js/profile.js"></script>
     <script src="/js/logout.js"></script>
-    
+    <script src="/js/new-post.js"></script>
     <script src="/js/script.js"></script>
   </body>
 </html>
