@@ -18,7 +18,9 @@
       {{#unless logged_in}}
       <a
                 href="#"
-                class="btn btn-primary btn-sm post-text"
+                id="comment-modal"
+                class="comment-modal btn btn-primary btn-sm post-text"
+                data-post-id="{{post.id}}"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdropNewComment"
                 >Add Comment</a

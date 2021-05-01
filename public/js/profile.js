@@ -84,6 +84,9 @@ $(".edit-modal").click(function () {
     },
   });
 });
+
+
+
 // });
 
 // $(".update-btn").click(function () {

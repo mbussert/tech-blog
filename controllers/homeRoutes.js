@@ -1,33 +1,62 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ["username", "email"],
+      //   },
+      //   {
+      //     model: Comment,
+      //     attributes: [
+      //       "id",
+      //       "comment_text",
+      //       "post_id",
+      //       "user_id",
+      //       "created_at",
+      //     ],
+      //     include: {
+      //       model: User,
+      //       attributes: ["username"],
+      //     },
+      //   },
+      // ],
+      attributes: ["id", "title", "text", "date_created"],
       include: [
-        {
-          model: User,
-          attributes: ["username", "email"],
-        },
         {
           model: Comment,
           attributes: [
             "id",
             "comment_text",
-            "user_id",
             "post_id",
+            "user_id",
             "created_at",
           ],
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+        {
+          model: User,
+          attributes: ["username"],
         },
       ],
     });
+
+    console.log("\n===============================\n", postData);
 
     // Serialize data so the template can read it
     const blogposts = postData.map((post) => post.get({ plain: true }));
 
     const userName = req.session.username;
+
+    console.log("\n===============================\n", blogposts);
 
     // console.log("Blogposts Variable:", blogposts);
 

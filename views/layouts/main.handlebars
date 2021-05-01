@@ -341,21 +341,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <div class="mb-3 row">
-                <label for="staticPostTitle" class="col-sm-2 col-form-label"
-                  >Post:
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    type="text"
-                    readonly
-                    class="form-control-plaintext"
-                    id="staticPostTitle"
-                    value="Post Title Here"
-                  />
-                </div>
-              </div>
-
+              
               <div class="mb-3">
                 <label for="newCommentBody" class="form-label">Comment</label>
                 <textarea
@@ -373,7 +359,7 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary post-text">
+              <button type="button" id="comment-modal-btn" class="submit-comment btn btn-primary post-text">
                 Add Comment
               </button>
             </div>
@@ -447,6 +433,7 @@
     ></script>
     <script src="/js/login.js"></script>
     <script src="/js/profile.js"></script>
+    <script src="/js/comment.js"></script>
     <script src="/js/logout.js"></script>
     <script src="/js/new-post.js"></script>
     <script src="/js/script.js"></script>
